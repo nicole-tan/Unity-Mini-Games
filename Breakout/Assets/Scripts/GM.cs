@@ -22,8 +22,8 @@ public class GM : MonoBehaviour {
 	private GameObject clonePaddle; 
 
 
-	// Use this for initialization
-	void Start () {
+	// Use this for objects to be instantiated before Start function 
+	void Awake () {
 		//enforce singleton pattern
 			//do we have a Game Manager yet? 
 		if (instance == null) 
@@ -43,6 +43,7 @@ public class GM : MonoBehaviour {
 		Instantiate (bricksPrefab, transform.position, Quaternion.identity); 
 	}
 
+	//just writing void means you're writing a private function
 	void CheckGameOver() {
 		if (bricks < 1) {
 			youWon.SetActive (true);
@@ -73,5 +74,16 @@ public class GM : MonoBehaviour {
 		//Clones the original object and returns the clone
 		Instantiate(deathParticles, clonePaddle.transform.position, Quaternion.identity);
 		Destroy (clonePaddle);
+		Invoke("SetupPaddle", resetDelay);
+		CheckGameOver(); 
+	}
+
+	void SetupPaddle() {
+		clonePaddle = Instantiate (paddle, transform.position, Quaternion.identity) as GameObject;
+	}
+
+	public void DestroyBrick() {
+		bricks--;
+		CheckGameOver ();
 	}
 }
