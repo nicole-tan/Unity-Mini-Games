@@ -2,7 +2,7 @@
 using System.Collections;
 
 /*
- * Bricks is a class representing the ball in our Breakout game. 
+ * Ball is a class representing the ball in our Breakout game. 
  * It is a child of Paddle because you want the ball to follow Paddle before the Start() function is called.
  */
 public class Ball : MonoBehaviour {

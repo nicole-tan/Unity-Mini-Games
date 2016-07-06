@@ -12,6 +12,7 @@ public class GM : MonoBehaviour {
 	public float resetDelay = 1f;
 	//livesText is a Text element and not a GameObject element because it is shown at all times
 	public Text livesText;
+	public Text scoreText; 
 	public GameObject gameOver;
 	public GameObject youWon;
 	public GameObject bricksPrefab;
@@ -39,6 +40,11 @@ public class GM : MonoBehaviour {
 
 		Setup (); 
 
+	}
+
+	//Called once every frame 
+	void Update () {
+		
 	}
 
 	/** Setup() clones the paddle GameObject and bricks GameObjects and returns them
